@@ -1,0 +1,2 @@
+dependencies/ingress/certs/*.pem
+.iron-bank-creds.yaml

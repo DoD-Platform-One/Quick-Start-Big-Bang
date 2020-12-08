@@ -1,0 +1,7 @@
+namespace: bigbang
+
+resources:
+  - git::https://repo1.dsop.io/platform-one/big-bang/umbrella.git/examples/complete/envs/dev
+
+patchesStrategicMerge:
+  - dev.yaml
