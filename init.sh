@@ -12,6 +12,10 @@ configs:
   registry1.dsop.io:
     auth:
       username: REPLACE_ME
+      password: REPLACE_ME  
+  registry1.dso.mil
+    auth:
+      username: REPLACE_ME
       password: REPLACE_ME
 EOF
     echo "Need to add Iron Brank pull creds.  Edit the file ${REGISTRY_CREDS} and then press [spacebar] to continue."
@@ -31,6 +35,7 @@ function launch_k3d() {
     --volume ${REGISTRY_CREDS}:/etc/rancher/k3s/registries.yaml \
     --k3s-server-arg "--disable=metrics-server" \
     --k3s-server-arg "--disable=traefik" \
+    --agents 3 \
     -p 80:80@loadbalancer \
     -p 443:443@loadbalancer \
     ${APPLICATION}
@@ -40,7 +45,7 @@ function install_flux() {
   kubectl create ns flux-system
 
   # Install flux in the cluster
-  kubectl apply -f https://repo1.dsop.io/platform-one/big-bang/apps/sandbox/fluxv2/-/raw/3-4-ib-images/flux-system.yaml
+  kubectl apply -f https://repo1.dso.mil/platform-one/big-bang/umbrella/-/raw/master/scripts/deploy/flux.yaml
 
   # Wait for flux
   kubectl wait --for=condition=available --timeout 300s -n "flux-system" "deployment/helm-controller"
@@ -49,22 +54,12 @@ function install_flux() {
 
 function deploy_bb() {
   # Launch big bang 
-  kustomize build bigbang | kubectl apply -f -
+  kubectl apply -f start.yaml
 
-  # Wait for Istio
-  kubectl wait --for=condition=ready --timeout 300s -n "bigbang" "helmrelease/bigbang" 
-  kubectl wait --for=condition=ready --timeout 300s -n "bigbang" "helmrelease/istio" 
+  watch kubectl get kustomizations,hr,po -A
 }
 
 setup_creds
 launch_k3d
 install_flux
 deploy_bb
-
-# Install the workloads
-kustomize build hello-world-auth-test | kubectl apply -f -    
-
-# Wait for the deployment to complete
-kubectl rollout status deployment/podinfo -n hello-world
-
-echo "Loaded, navigate to https://test.bigbang.dev"
