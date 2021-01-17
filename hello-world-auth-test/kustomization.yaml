@@ -1,3 +1,0 @@
-resources:
-  - git::https://repo1.dsop.io/platform-one/hello-world/authservice.git/hello-world
-          

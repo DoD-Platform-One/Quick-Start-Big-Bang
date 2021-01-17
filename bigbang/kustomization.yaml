@@ -1,7 +1,24 @@
-namespace: bigbang
+bases:
+  - git::https://repo1.dsop.io/platform-one/big-bang/umbrella.git/base?ref=1.0.2
 
 resources:
-  - git::https://repo1.dsop.io/platform-one/big-bang/umbrella.git/examples/complete/envs/dev
+  - secrets/ingress-cert.enc.yaml
+
+configMapGenerator:
+  - name: common
+    namespace: bigbang
+    behavior: merge
+    files:
+      - values.yaml
 
 patchesStrategicMerge:
-  - dev.yaml
+- |-
+  apiVersion: source.toolkit.fluxcd.io/v1beta1
+  kind: GitRepository
+  metadata:
+    name: bigbang
+    namespace: bigbang
+  spec:
+    ref:
+      $patch: replace
+      semver: "1.0.2"
