@@ -13,7 +13,7 @@ configs:
     auth:
       username: REPLACE_ME
       password: REPLACE_ME  
-  registry1.dso.mil
+  registry1.dso.mil:
     auth:
       username: REPLACE_ME
       password: REPLACE_ME
