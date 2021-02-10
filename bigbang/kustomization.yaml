@@ -1,5 +1,5 @@
 bases:
-  - git::https://repo1.dsop.io/platform-one/big-bang/umbrella.git/base?ref=1.0.2
+  - git::https://repo1.dso.mil/platform-one/big-bang/umbrella.git/base?ref=1.0.7
 
 resources:
   - secrets/ingress-cert.enc.yaml
@@ -21,4 +21,4 @@ patchesStrategicMerge:
   spec:
     ref:
       $patch: replace
-      semver: "1.0.2"
+      semver: "1.0.7"
