@@ -3,24 +3,33 @@ set -e
 
 APPLICATION=hello-world-bb-universe
 IMAGE_CACHE=${HOME}/.dod-platform-one-big-bang-cache
-REGISTRY_CREDS=${PWD}/.iron-bank-creds.yaml
+REGISTRY_CREDS=$(pwd)/bigbang/.iron-bank-creds
 
 function setup_creds() {
-  if [ ! -f ${REGISTRY_CREDS} ]; then
-    cat <<EOF > .iron-bank-creds.yaml
-configs:
-  registry1.dsop.io:
-    auth:
-      username: REPLACE_ME
-      password: REPLACE_ME  
-  registry1.dso.mil:
-    auth:
-      username: REPLACE_ME
-      password: REPLACE_ME
+  if [ ! -f ${REGISTRY_CREDS}.env ]; then
+    cat <<EOF > $REGISTRY_CREDS.env
+IB_USERNAME=REPLACE_ME
+IB_PASSWORD=REPLACE_ME
+
 EOF
-    echo "Need to add Iron Brank pull creds.  Edit the file ${REGISTRY_CREDS} and then press [spacebar] to continue."
+    echo "Need to add Iron Brank pull creds.  Edit the file ${REGISTRY_CREDS}.env and then press [spacebar] to continue."
     read -s -d ' '
   fi
+
+  source ${REGISTRY_CREDS}.env
+
+  cat <<EOF > $REGISTRY_CREDS-bb.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+    name: common-bb
+stringData:
+    values.yaml: |-
+        registryCredentials:
+          username: $IB_USERNAME
+          password: $IB_PASSWORD
+EOF
+
 }
 
 function launch_k3d() {
@@ -32,7 +41,6 @@ function launch_k3d() {
   # Create the cluster
   k3d cluster create \
     --volume ${IMAGE_CACHE}:/var/lib/rancher/k3s/agent/containerd/io.containerd.content.v1.content \
-    --volume ${REGISTRY_CREDS}:/etc/rancher/k3s/registries.yaml \
     --k3s-server-arg "--disable=metrics-server" \
     --k3s-server-arg "--disable=traefik" \
     -p 80:80@loadbalancer \
@@ -42,6 +50,12 @@ function launch_k3d() {
 
 function install_flux() {
   kubectl create ns flux-system
+
+  # Create the IB pull secret for flux
+  kubectl create secret docker-registry private-registry -n flux-system \
+    --docker-server=registry1.dso.mil \
+    --docker-username="${IB_USERNAME}" \
+    --docker-password="${IB_PASSWORD}"
 
   # Install flux in the cluster
   kubectl apply -f https://repo1.dso.mil/platform-one/big-bang/umbrella/-/raw/master/scripts/deploy/flux.yaml
