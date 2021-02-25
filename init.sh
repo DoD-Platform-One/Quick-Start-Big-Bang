@@ -18,7 +18,7 @@ configs:
       username: REPLACE_ME
       password: REPLACE_ME
 EOF
-    echo "Need to add Iron Brank pull creds.  Edit the file ${REGISTRY_CREDS} and then press [spacebar] to continue."
+    echo "Need to add Iron Brank pull creds from https://registry1.dso.mil/.  Edit the file ${REGISTRY_CREDS} and then press [spacebar] to continue."
     read -s -d ' '
   fi
 }
