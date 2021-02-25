@@ -12,7 +12,6 @@ configMapGenerator:
       - values.yaml
 
 patchesStrategicMerge:
-- .iron-bank-creds-bb.yaml
 - |-
   apiVersion: source.toolkit.fluxcd.io/v1beta1
   kind: GitRepository
