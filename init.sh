@@ -35,7 +35,6 @@ function launch_k3d() {
     --volume ${REGISTRY_CREDS}:/etc/rancher/k3s/registries.yaml \
     --k3s-server-arg "--disable=metrics-server" \
     --k3s-server-arg "--disable=traefik" \
-    --agents 3 \
     -p 80:80@loadbalancer \
     -p 443:443@loadbalancer \
     ${APPLICATION}
