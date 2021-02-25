@@ -3,19 +3,24 @@ set -e
 
 APPLICATION=hello-world-bb-universe
 IMAGE_CACHE=${HOME}/.dod-platform-one-big-bang-cache
-REGISTRY_CREDS=$(pwd)/.iron-bank-creds
+REGISTRY_CREDS=$(pwd)/.iron-bank-creds.yaml
 
 function setup_creds() {
-  if [ ! -f ${REGISTRY_CREDS}.env ]; then
-    cat <<EOF > $REGISTRY_CREDS.env
-IB_USERNAME=REPLACE_ME
-IB_PASSWORD=REPLACE_ME
+  if [ ! -f ${REGISTRY_CREDS} ]; then
+    cat <<EOF > $REGISTRY_CREDS
+configs:
+  registry1.dsop.io:
+    auth:
+      username: REPLACE_ME
+      password: REPLACE_ME  
+  registry1.dso.mil:
+    auth:
+      username: REPLACE_ME
+      password: REPLACE_ME
 EOF
-    echo "Need to add Iron Brank pull creds.  Edit the file ${REGISTRY_CREDS}.env and then press [spacebar] to continue."
+    echo "Need to add Iron Brank pull creds.  Edit the file ${REGISTRY_CREDS} and then press [spacebar] to continue."
     read -s -d ' '
   fi
-
-  source ${REGISTRY_CREDS}.env
 }
 
 function launch_k3d() {
@@ -27,6 +32,7 @@ function launch_k3d() {
   # Create the cluster
   k3d cluster create \
     --volume ${IMAGE_CACHE}:/var/lib/rancher/k3s/agent/containerd/io.containerd.content.v1.content \
+    --volume ${REGISTRY_CREDS}:/etc/rancher/k3s/registries.yaml \
     --k3s-server-arg "--disable=metrics-server" \
     --k3s-server-arg "--disable=traefik" \
     -p 80:80@loadbalancer \
@@ -34,17 +40,8 @@ function launch_k3d() {
     ${APPLICATION}
 }
 
-function hack_secret() {
-  kubectl create secret docker-registry private-registry -n $1 \
-    --dry-run=client \
-    --docker-server=registry1.dso.mil \
-    --docker-username="${IB_USERNAME}" \
-    --docker-password="${IB_PASSWORD}" -o yaml | kubectl apply -f -
-}
-
 function install_flux() {
   kubectl create ns flux-system
-  hack_secret "flux-system"
 
   # Install flux in the cluster
   kubectl apply -f https://repo1.dso.mil/platform-one/big-bang/umbrella/-/raw/master/scripts/deploy/flux.yaml
@@ -58,14 +55,7 @@ function deploy_bb() {
   # Launch big bang 
   kubectl apply -f start.yaml
 
-  # Lazy temp workaround 
-  echo "Wait to overwrite pull secrets"
-  sleep 20
-
-  for ns in $(kubectl get ns -o jsonpath="{.items[*].metadata.name}"); do
-    hack_secret $ns
-  done
-
+  # Watch the deployments
   watch kubectl get kustomizations,hr,po -A
 }
 
