@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-APPLICATION=hello-world-bb-universe
+APPLICATION=big-bang-quick-start
 IMAGE_CACHE=${HOME}/.dod-platform-one-big-bang-cache
 REGISTRY_CREDS=$(pwd)/.iron-bank-creds.yaml
 
