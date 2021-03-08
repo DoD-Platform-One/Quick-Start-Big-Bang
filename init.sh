@@ -44,7 +44,7 @@ function install_flux() {
   kubectl create ns flux-system
 
   # Install flux in the cluster
-  kubectl apply -f https://repo1.dso.mil/platform-one/big-bang/umbrella/-/raw/master/scripts/deploy/flux.yaml
+  kubectl apply -f https://repo1.dso.mil/platform-one/big-bang/bigbang/-/raw/master/scripts/deploy/flux.yaml
 
   # Wait for flux
   kubectl wait --for=condition=available --timeout 300s -n "flux-system" "deployment/helm-controller"
@@ -52,6 +52,9 @@ function install_flux() {
 }
 
 function deploy_bb() {
+  # Get cluster config
+  export KUBECONFIG=$(k3d kubeconfig write $APPLICATION)
+
   # Launch big bang 
   kubectl apply -f start.yaml
 
