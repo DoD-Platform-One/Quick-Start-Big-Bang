@@ -52,15 +52,14 @@ function install_flux() {
 }
 
 function deploy_bb() {
-  # Get cluster config
-  export KUBECONFIG=$(k3d kubeconfig write $APPLICATION)
-
   # Launch big bang 
   kubectl apply -f start.yaml
 
   # Watch the deployments
   watch kubectl get kustomizations,hr,po -A
 }
+
+alias getconfig='export KUBECONFIG=$(k3d kubeconfig write $APPLICATION)'
 
 setup_creds
 launch_k3d

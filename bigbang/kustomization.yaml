@@ -8,6 +8,9 @@ configMapGenerator:
     files:
       - values.yaml
 
+resources:
+- https://repo1.dso.mil/platform-one/big-bang/bigbang/-/raw/master/chart/ingress-certs.yaml
+
 patchesStrategicMerge:
 - |-
   apiVersion: source.toolkit.fluxcd.io/v1beta1
