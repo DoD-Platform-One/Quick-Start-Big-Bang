@@ -33,6 +33,7 @@ function launch_k3d() {
   k3d cluster create \
     --volume ${IMAGE_CACHE}:/var/lib/rancher/k3s/agent/containerd/io.containerd.content.v1.content \
     --volume ${REGISTRY_CREDS}:/etc/rancher/k3s/registries.yaml \
+    --volume /etc/machine-id:/etc/machine-id \
     --k3s-server-arg "--disable=metrics-server" \
     --k3s-server-arg "--disable=traefik" \
     -p 80:80@loadbalancer \
