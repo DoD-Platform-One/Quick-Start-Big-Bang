@@ -8,10 +8,33 @@ This is a small repo to help quickly test basic concepts of Big Bang on a local 
 
 What you need:
 - [K3d](https://github.com/rancher/k3d)
+- [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 
 Nice to haves:
 - [K8s Lens](https://k8slens.dev/) - _Handy GUI for kubectl_
 
-Use it:
-- Init cluster (may prompt for sudo auth) `./init.sh`
-- `kubectl get vs -A` to view the list of endpoints
+# Instructions
+
+### Create the file `terraform.tfvars` and fill out below.  You 
+
+```bash
+registry1_username="REPLACE_ME"
+registry1_password="REPLACE_ME"
+```
+
+### Deploy Big Bang onto the new cluster
+
+```bash
+# Initialize K3d (temporary until k3d module is complete)
+./init-k3d.sh
+
+# Initialize & apply terraform
+terraform init
+terraform apply 
+
+# Watch the deployments
+watch kubectl get kustomizations,hr,po -A
+
+# Get a list of http endpoints
+kubectl get vs -A
+```

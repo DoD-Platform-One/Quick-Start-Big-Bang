@@ -1,5 +1,5 @@
 bases:
-  - git::https://repo1.dso.mil/platform-one/big-bang/umbrella.git/base?ref=1.3.0
+  - git::https://repo1.dso.mil/platform-one/big-bang/umbrella.git/base?ref=disable-kustomize-suffixes
 
 configMapGenerator:
   - name: common

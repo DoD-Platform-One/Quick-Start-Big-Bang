@@ -1,1 +1,6 @@
 .iron-bank-creds*
+*.tfvars
+.terraform*
+terraform.tfvars
+terraform.tfstate*
+crash.log
