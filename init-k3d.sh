@@ -4,10 +4,10 @@ set -e
 APPLICATION=big-bang-quick-start
 IMAGE_CACHE=${HOME}/.dod-platform-one-big-bang-cache
 
-mkdir -p ${IMAGE_CACHE}
-
 # Clean slate
 k3d cluster delete ${APPLICATION} || echo "Cluster already deleted"
+
+mkdir -p ${IMAGE_CACHE}
 
 # Create the cluster
 k3d cluster create \
@@ -18,3 +18,5 @@ k3d cluster create \
   -p 80:80@loadbalancer \
   -p 443:443@loadbalancer \
   ${APPLICATION}
+
+echo "k3d ready, check the README.md for the next steps."

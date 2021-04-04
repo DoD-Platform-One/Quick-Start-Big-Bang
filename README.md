@@ -30,7 +30,7 @@ registry1_password="REPLACE_ME"
 # Initialize k3d
 ./init-k3d.sh
 
-# Initialize & apply terraform
+# Initialize & apply terraform (type yes at prompt)
 terraform init
 terraform apply 
 
@@ -39,4 +39,14 @@ watch kubectl get kustomizations,hr,po -A
 
 # Get a list of http endpoints
 kubectl get vs -A
+```
+
+### Teardown
+
+```bash
+# Big bang teardown (optional, takes several minutes & just reverts back to an empty cluster)
+terraform destroy
+
+# k3d teardown
+k3d cluster delete big-bang-quick-start
 ```
