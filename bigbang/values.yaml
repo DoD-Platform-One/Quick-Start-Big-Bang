@@ -12,8 +12,6 @@ logging:
     elasticsearch:
       master:
         count: 1
-        persistence:
-          size: 5Gi
         resources:
           limits:
             cpu: 1
@@ -21,6 +19,7 @@ logging:
       data:
         count: 1
         persistence:
+          storageClassName: ""
           size: 5Gi
         resources:
           limits:
