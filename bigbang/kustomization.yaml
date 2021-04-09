@@ -1,5 +1,5 @@
 bases:
-  - git::https://repo1.dso.mil/platform-one/big-bang/umbrella.git/base?ref=1.5.0
+  - git::https://repo1.dso.mil/platform-one/big-bang/umbrella.git/base?ref=temporary-branch-pending-release
 
 configMapGenerator:
   - name: common
