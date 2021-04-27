@@ -7,7 +7,7 @@ variable "registry1_password" {
 }
 
 variable "reduce_flux_resources" {
-  type = boolean
+  type = bool
   default = true
 }
 
