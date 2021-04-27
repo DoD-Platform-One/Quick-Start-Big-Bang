@@ -23,8 +23,6 @@ Nice to haves:
 ```bash
 registry1_username="REPLACE_ME"
 registry1_password="REPLACE_ME"
-## Optional
-
 ```
 
 ### Deploy Big Bang onto the new cluster
