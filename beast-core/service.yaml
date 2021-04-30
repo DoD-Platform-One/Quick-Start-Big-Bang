@@ -1,0 +1,14 @@
+# Source: beast-core/templates/service.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: beast-core-airgap-demo-service
+  labels:
+    app: "beast-core-airgap-demo"
+spec:
+  selector:
+    app: "beast-core-airgap-demo"
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
