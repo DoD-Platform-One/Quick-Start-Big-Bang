@@ -13,18 +13,12 @@ logging:
       master:
         count: 3
         resources:
-          limits:
-            cpu: 1
-            memory: 3Gi
       data:
-        count: 3
+        count: 4
         persistence:
           storageClassName: ""
           size: 5Gi
         resources:
-          limits:
-            cpu: 1
-            memory: 3Gi
 
 istio:
   # Directly modify chart values for dev workloads
