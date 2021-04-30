@@ -11,10 +11,10 @@ logging:
   values:
     elasticsearch:
       master:
-        count: 3
+        count: 1
         resources:
       data:
-        count: 4
+        count: 2
         persistence:
           storageClassName: ""
           size: 5Gi
