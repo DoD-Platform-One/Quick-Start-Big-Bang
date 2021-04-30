@@ -11,14 +11,14 @@ logging:
   values:
     elasticsearch:
       master:
-        count: 1
+        count: 2
         resources:
           limits:
             cpu: 1
             memory: 3Gi
         clusterHealthCheckParams: "local=true" 
       data:
-        count: 1
+        count: 2
         persistence:
           storageClassName: ""
           size: 5Gi
