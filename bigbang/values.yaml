@@ -11,14 +11,13 @@ logging:
   values:
     elasticsearch:
       master:
-        count: 2
+        count: 3
         resources:
           limits:
             cpu: 1
             memory: 3Gi
-        clusterHealthCheckParams: "local=true" 
       data:
-        count: 2
+        count: 3
         persistence:
           storageClassName: ""
           size: 5Gi
@@ -26,7 +25,6 @@ logging:
           limits:
             cpu: 1
             memory: 3Gi
-        clusterHealthCheckParams: "local=true"
 
 istio:
   # Directly modify chart values for dev workloads
