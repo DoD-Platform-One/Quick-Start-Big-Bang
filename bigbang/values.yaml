@@ -46,7 +46,7 @@ istio:
         service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
 
 istiooperator:
-  enabled: false
+  enabled: true
 
 jaeger:
   enabled: false
