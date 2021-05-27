@@ -5,6 +5,8 @@ flux:
   interval: 1m
   rollback:
     cleanupOnFail: false
+monitoring:
+  enabled: false
 
 logging:
   enabled: false
@@ -42,13 +44,26 @@ istio:
         service.beta.kubernetes.io/aws-load-balancer-internal: "true"
         # Enable cross zone load balancing
         service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+istiooperator:
+  enabled: false
+jaegar:
+  enabled: false
+
+kiali:
+  enabled: false
+clusterAuditor:
+  enabled: false
 
 gatekeeper:
   enabled: false
   # Directly modify chart values for dev workloads
   values:
     replicas: 1
+eckoperator:
+  enabled: false
 
+fluentbit:
+  enabled: false
 twistlock:
   enabled: false
   # Directly modify chart values for dev workloads
