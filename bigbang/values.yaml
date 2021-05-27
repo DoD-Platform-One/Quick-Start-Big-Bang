@@ -1,6 +1,4 @@
 hostname: bigbang.dev
-proxy:
-  enabled: true
 
 addons:
   nexus:
@@ -9,4 +7,4 @@ addons:
     git:
         repo: https://repo1.dso.mil/platform-one/big-bang/apps/developer-tools/nexus.git
         path: "./chart"
-        ref: "proxy_support"
+        tag: "29.1.0-bb.0"
