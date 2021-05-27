@@ -4,7 +4,7 @@ bases:
 configMapGenerator:
   - name: common
     namespace: bigbang
-    behavior: merge
+    behavior: create
     files:
       - values.yaml
 
