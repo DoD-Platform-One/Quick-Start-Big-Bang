@@ -5,9 +5,6 @@ flux:
   interval: 1m
   rollback:
     cleanupOnFail: true
-  syncGarbageCollection:
-    enabled: true
-    dry: true
 
 # logging:
 #   # Directly modify chart values for dev workloads
