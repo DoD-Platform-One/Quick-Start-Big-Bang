@@ -9,4 +9,4 @@ addons:
     git:
         repo: https://repo1.dso.mil/platform-one/big-bang/apps/developer-tools/nexus.git
         path: "./chart"
-        ref: "proxy-support"
+        ref: "proxy_support"
