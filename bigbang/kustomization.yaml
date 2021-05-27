@@ -1,6 +1,5 @@
 bases:
-  - git::https://repo1.dso.mil/platform-one/big-bang/umbrella.git/base?ref=nexus
- # - git::https://repo1.dso.mil/platform-one/big-bang/umbrella.git/base?ref=1.8.0
+  - git::https://repo1.dso.mil/platform-one/big-bang/bigbang.git/base?ref=nexus
 
 configMapGenerator:
   - name: common
@@ -20,3 +19,4 @@ patchesStrategicMerge:
     ref:
       $patch: replace
       branch: nexus
+
