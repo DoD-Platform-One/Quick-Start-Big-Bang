@@ -1,5 +1,6 @@
 bases:
-  - git::https://repo1.dso.mil/platform-one/big-bang/umbrella.git/base?ref=temporary-branch-pending-release
+  - git::https://repo1.dso.mil/platform-one/big-bang/umbrella.git/base?ref=nexus
+ # - git::https://repo1.dso.mil/platform-one/big-bang/umbrella.git/base?ref=1.8.0
 
 configMapGenerator:
   - name: common
@@ -18,4 +19,4 @@ patchesStrategicMerge:
   spec:
     ref:
       $patch: replace
-      semver: "1.5.0"
+      branch: nexus
