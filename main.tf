@@ -12,7 +12,7 @@ variable "reduce_flux_resources" {
 }
 
 module "big_bang" {
-  source = "git::https://repo1.dso.mil/platform-one/big-bang/terraform-modules/big-bang-terraform-launcher.git"
+  source = "git::https://repo1.dso.mil/platform-one/big-bang/terraform-modules/big-bang-terraform-launcher.git?ref=v0.1.0"
 
   big_bang_manifest_file = "bigbang/start.yaml"
   registry_credentials = [{
