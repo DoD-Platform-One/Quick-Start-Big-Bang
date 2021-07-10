@@ -30,6 +30,9 @@ registry1_password = "REPLACE_ME"
 ### Deploy Big Bang onto the new cluster
 
 ```shell
+# Linux systems may require this line for EFK to not die
+sudo sysctl -w vm.max_map_count=262144
+
 # Initialize k3d
 ./init-k3d.sh
 
