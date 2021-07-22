@@ -20,7 +20,7 @@ Nice to haves:
 
 ## Instructions
 
-### Create the file `terraform.tfvars` and fill out below.   You will need to get your [Registry1](http://registry1.dso.mil/) CLI secret from the user profile screen
+### Edit the file `terraform.tfvars` and with your [Registry1](http://registry1.dso.mil/) CLI username and secret from the user profile screen
 
 ```terraform
 registry1_username = "REPLACE_ME"
