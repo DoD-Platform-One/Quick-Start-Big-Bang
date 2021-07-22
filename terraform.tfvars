@@ -1,2 +1,2 @@
-registry1_username = "REPLACE_ME"
-registry1_password = "REPLACE_ME"
+registry1_username = "Jason_Krause"
+registry1_password = "ppbzW1vom"
