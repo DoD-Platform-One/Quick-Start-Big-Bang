@@ -6,6 +6,8 @@ This is a small repo to help quickly test basic concepts of Big Bang on a local 
 
 ---
 
+## Prerequisites
+
 What you need:
 
 - [Docker](https://docs.docker.com/get-started/)
@@ -20,37 +22,48 @@ Nice to haves:
 
 ## Instructions
 
-### Create and populate the file `terraform.tfvars` with your [Registry1](http://registry1.dso.mil/) CLI username and secret from the user profile screen
-
-```terraform
-registry1_username = "REPLACE_ME"
-registry1_password = "REPLACE_ME"
-```
-
-### Deploy Big Bang onto the new cluster
-
 ```shell
-# Linux systems may require this line for EFK to not die
+# Get your username and password from https://registry1.dso.mil and set them as
+# env vars to be used later. The password to use is in your user profile under
+# 'CLI secret'. If you don't have an account you can register one on the 
+# Platform One login page.
+export REGISTRY1_USERNAME="bobbytables"
+export REGISTRY1_PASSWORD="yourpasswordhere"
+
+# Create a Terraform .tfvars file that will be gitignored (since it has secrets
+# in it)
+cat <<EOF >>terraform.tfvars
+registry1_username = "${REGISTRY1_USERNAME}"
+registry1_password = "${REGISTRY1_PASSWORD}"
+EOF
+
+# Linux systems may require this line for EFK to not die. Otherwise you can skip
+# to the next command
 sudo sysctl -w vm.max_map_count=262144
 
-# Initialize k3d
+# Initialize k3d. Your system will be automatically configured to use the right
+# KUBECONTEXT.
 ./init-k3d.sh
 
-# Initialize & apply terraform
+# Initialize & apply terraform. This will take several minutes.
+# If you want to watch it happen use the next command under 
+# "Watch the deployments" in a new terminal or other user interface
 terraform init
 terraform apply --auto-approve
 
-# Watch the deployments
+# Watch the deployments. Wait for everything under STATUS to say "Running" and
+# everything under READY to say "True"
 watch kubectl get kustomizations,hr,po -A
 
-# Get a list of http endpoints
-kubectl get vs -A
+# Get a list of http endpoints that will resolve to your localhost.
+kubectl get virtualservices -A
 ```
 
 ### Teardown
 
 ```shell
-# Big bang teardown (optional, takes several minutes & just reverts back to an empty cluster)
+# Big bang teardown (optional, takes several minutes & just reverts back to an
+# empty cluster)
 terraform destroy
 
 # k3d teardown
