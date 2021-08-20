@@ -27,6 +27,7 @@ logging:
             memory: 3Gi
 
 istio:
+  enabled: true
   # Directly modify chart values for dev workloads
   values:
     kiali:
