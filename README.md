@@ -68,4 +68,7 @@ terraform destroy
 
 # k3d teardown
 k3d cluster delete big-bang-quick-start
+
+# Delete Terraform state (if you didn't run `terraform destroy`)
+rm terraform.tfstate
 ```
