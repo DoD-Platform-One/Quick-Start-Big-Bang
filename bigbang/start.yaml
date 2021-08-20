@@ -12,7 +12,7 @@ metadata:
   namespace: bigbang
 spec:
   interval: 1m
-  url: https://github.com/RothAndrew/big-bang-quickstart
+  url: https://repo1.dso.mil/platform-one/quick-start/big-bang
   ref:
     branch: feature/rothandrew-docs-updates
 
