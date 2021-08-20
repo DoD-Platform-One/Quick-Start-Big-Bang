@@ -13,7 +13,9 @@ What you need:
 - [Docker](https://docs.docker.com/get-started/)
 - [k3d](https://github.com/rancher/k3d)
 - [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
-- VM or Machine with 5-6 cpu cores and ~16 GB of ram
+- VM or Machine with 
+  - Bare minimum: 6 logical cpu cores and 16GB RAM
+  - Recommended: 8+ cores and 32GB+ RAM
 
 Nice to haves:
 
@@ -57,6 +59,9 @@ watch kubectl get kustomizations,hr,po -A
 
 # Get a list of http endpoints that will resolve to your localhost.
 kubectl get virtualservices -A
+
+# Get Grafana username and password
+
 ```
 
 ### Teardown
