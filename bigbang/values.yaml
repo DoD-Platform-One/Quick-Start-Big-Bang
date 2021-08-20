@@ -27,7 +27,6 @@ logging:
             memory: 3Gi
 
 istio:
-  enabled: true
   # Directly modify chart values for dev workloads
   values:
     kiali:
@@ -71,7 +70,7 @@ istio:
       73hJO8bDRMI7BEtaYKyEFcCgdNXOyDRfYhLtJllaIiJNbC8m4dW8H7Hq4Av2pTc0
       dbfd2CfWKgXWqJNl2RCGWIoqDIU=
       -----END PRIVATE KEY-----
-      cert: |
+    cert: |
       -----BEGIN CERTIFICATE-----
       MIIFITCCBAmgAwIBAgISA4QDnwfowfekJU7pBgWPPB3SMA0GCSqGSIb3DQEBCwUA
       MDIxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQD
