@@ -42,6 +42,11 @@ istio:
         # Enable cross zone load balancing
         service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
   ingress:
+    # These are the TLS certs for https://*.bigbang.dev, which is set to resolve back to 127.0.0.1 (localhost).
+    # If you are deploying Big Bang using this and the domain names aren't working these certs may have been rotated.
+    # See https://repo1.dso.mil/platform-one/big-bang/bigbang/-/blob/master/chart/ingress-certs.yaml for the latest
+    # version. Normally you would never commit a private certificate, but in this case it is okay since the domain
+    # bigbang.dev is set up for local development only and isn't used operationally.
     key: |
       -----BEGIN PRIVATE KEY-----
       MIIEwAIBADANBgkqhkiG9w0BAQEFAASCBKowggSmAgEAAoIBAQD1ahjVSH4A+inh
