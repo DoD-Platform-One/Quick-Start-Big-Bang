@@ -55,6 +55,7 @@ kiali:
 istio:
   # Directly modify chart values for dev workloads
   values:
+    ingress: { key: "", cert: "" }
     kiali:
       dashboard:
         auth:
