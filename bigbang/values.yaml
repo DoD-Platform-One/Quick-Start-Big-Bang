@@ -49,11 +49,13 @@ fluentbit:
 jaeger:
   enabled: false
 
+kiali:
+  enabled: false
+
 istio:
   # Directly modify chart values for dev workloads
   values:
     kiali:
-      enabled: false
       dashboard:
         auth:
           strategy: "anonymous"   
