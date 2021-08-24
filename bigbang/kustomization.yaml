@@ -1,7 +1,7 @@
 bases:
   - git::https://repo1.dso.mil/platform-one/big-bang/bigbang.git/base?ref=1.14.1
-# resources:
-#   - public-cert.yaml
+resources:
+  - public-cert.yaml
 
 configMapGenerator:
   - name: common
