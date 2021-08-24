@@ -86,3 +86,7 @@ k3d cluster delete big-bang-quick-start
 # Delete Terraform state (if you didn't run `terraform destroy`)
 rm terraform.tfstate
 ```
+
+### Makefile
+
+For your convenience, a Makefile is provided with targets `make up` and `make down`
