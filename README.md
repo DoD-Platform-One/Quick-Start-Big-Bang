@@ -60,8 +60,6 @@ watch kubectl get kustomizations,hr,po -A
 # Get a list of http endpoints that will resolve to your localhost.
 kubectl get virtualservices -A
 
-# Get Grafana username and password
-
 ```
 
 ### Teardown
