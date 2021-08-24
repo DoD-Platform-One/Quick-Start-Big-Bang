@@ -457,7 +457,7 @@ addons:
           name: velero
 
   keycloak:
-    enabled: false
+    enabled: true
     ingress:
       gateway: "public"
     values:
