@@ -6,6 +6,7 @@ flux:
     cleanupOnFail: false
 
 networkPolicies:
+  enabled: false
   controlPlaneCidr: 172.16.0.0/12
 
 eckoperator:
@@ -53,31 +54,19 @@ kiali:
   enabled: false
 
 istio:
+  # Directly modify chart values for dev workloads
   values:
     kiali:
       dashboard:
         auth:
-          strategy: "anonymous"
-  ingressGateways:
-    maxReplicas: 1
-    serviceAnnotations:
-      # Ensure mission apps have internal load balancer only
-      service.beta.kubernetes.io/aws-load-balancer-internal: "true"
-      # Enable cross zone load balancing
-      service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
-    passthrough-ingressgateway:
-      type: "NodePort" # or "LoadBalancer"
-      # Node ports are assigned starting from nodePortBase.  The nodePortBase specifies the start of a range of 4 unused node ports.
-      # Node port will be assigned as follows: Port 15021 (Status) = nodePortBase, Port 80 = nodePortBase+1, Port 443 = nodePortBase+2, Port 15443 (SNI) = nodePortBase+3
-      # Node port base should be in the range from 30000 to 32764
-      nodePortBase: 32000  # Alternatively, the kubernetesResourceSpec can be used to configure all port parameters
-  gateways:
-    passthrough:
-      ingressGateway: "passthrough-ingressgateway"
-      hosts:
-      - "*.{{ .Values.hostname }}"
-      tls:
-        mode: "PASSTHROUGH"
+          strategy: "anonymous"   
+    ingressGateway:
+      maxReplicas: 1
+      serviceAnnotations:
+        # Ensure mission apps have internal load balancer only
+        service.beta.kubernetes.io/aws-load-balancer-internal: "true"
+        # Enable cross zone load balancing
+        service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
 
 clusterAuditor:
   enabled: false
