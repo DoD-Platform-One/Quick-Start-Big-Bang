@@ -485,7 +485,7 @@ addons:
   keycloak:
     enabled: true
     ingress:
-      gateway: "passthrough"
+      gateway: "public"
     values:
       replicas: 1
       resources:
