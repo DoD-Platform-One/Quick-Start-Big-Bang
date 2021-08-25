@@ -9,13 +9,13 @@ configMapGenerator:
       - values.yaml
 
 patchesStrategicMerge:
-- |-
-  apiVersion: source.toolkit.fluxcd.io/v1beta1
-  kind: GitRepository
-  metadata:
-    name: bigbang
-    namespace: bigbang
-  spec:
-    ref:
-      $patch: replace
-      semver: "1.12.0"
+  - |-
+    apiVersion: source.toolkit.fluxcd.io/v1beta1
+    kind: GitRepository
+    metadata:
+      name: bigbang
+      namespace: bigbang
+    spec:
+      ref:
+        $patch: replace
+        semver: "1.12.0"
