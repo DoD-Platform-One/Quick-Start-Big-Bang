@@ -136,7 +136,7 @@ twistlock:
 # Explicitly enable all addons for CI
 addons:
   argocd:
-    enabled: false
+    enabled: true
     values:
       controller:
         resources:
