@@ -1,5 +1,5 @@
 bases:
-  - git::https://repo1.dso.mil/platform-one/big-bang/bigbang.git/base?ref=1.12.0
+  - git::https://repo1.dso.mil/platform-one/big-bang/bigbang.git/base?ref=tags/1.14.1
 
 configMapGenerator:
   - name: common
@@ -7,15 +7,3 @@ configMapGenerator:
     behavior: merge
     files:
       - values.yaml
-
-patchesStrategicMerge:
-  - |-
-    apiVersion: source.toolkit.fluxcd.io/v1beta1
-    kind: GitRepository
-    metadata:
-      name: bigbang
-      namespace: bigbang
-    spec:
-      ref:
-        $patch: replace
-        semver: "1.12.0"

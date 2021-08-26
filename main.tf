@@ -1,5 +1,5 @@
 module "big_bang" {
-  source = "git::https://repo1.dso.mil/platform-one/big-bang/terraform-modules/big-bang-terraform-launcher.git?ref=v0.1.2"
+  source = "git::https://repo1.dso.mil/platform-one/big-bang/terraform-modules/big-bang-terraform-launcher.git?ref=4d629bcc"
 
   big_bang_manifest_file = "bigbang/start.yaml"
   registry_credentials = [{
@@ -7,5 +7,4 @@ module "big_bang" {
     username = var.registry1_username
     password = var.registry1_password
   }]
-  reduce_flux_resources = var.reduce_flux_resources
 }
