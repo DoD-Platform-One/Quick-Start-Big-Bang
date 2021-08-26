@@ -22,15 +22,15 @@ logging:
           size: 5Gi
         resources:
           requests:
-            cpu: .5
+            cpu: 100m
           limits: {}
       data:
-        count: 2
+        count: 1
         persistence:
           size: 5Gi
         resources:
           requests:
-            cpu: .5
+            cpu: 100m
           limits: {}
     kibana:
       count: 1
