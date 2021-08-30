@@ -7,4 +7,5 @@ up:
 
 down:
 	k3d cluster delete big-bang-quick-start
-	rm terraform.tfstate
+	rm -f terraform.tfstate
+	rm -f terraform.tfstate.backup

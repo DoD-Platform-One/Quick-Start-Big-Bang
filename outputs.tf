@@ -4,6 +4,18 @@ output "istio_gw_ip" {
 }
 
 output "external_load_balancer" {
-  description = "JSON array with info on Istio's LoadBalancer(s). Keys are 'name', 'ip', 'hostname'"
+  description = <<EOF
+JSON array with information on all LoadBalancer services in the istio-system namespace. Example output:
+```
+[
+  {
+    "name": "public-ingressgateway",
+    "ip": "192.0.2.0",
+    "hostname": "null"
+  },
+  {...}
+]
+```
+EOF
   value = module.big_bang.external_load_balancer
 }
