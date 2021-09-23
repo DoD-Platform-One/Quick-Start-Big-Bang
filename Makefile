@@ -2,7 +2,9 @@ all: up
 
 up:
 	./init-k3d.sh
+	sleep 30
 	terraform init
+	sleep 30
 	terraform apply --auto-approve
 
 down:
