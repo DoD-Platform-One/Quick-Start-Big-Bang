@@ -22,7 +22,7 @@ logging:
           size: 5Gi
         resources:
           requests:
-            cpu: 100m
+            cpu: 50m
           limits: {}
       data:
         count: 1
@@ -30,7 +30,7 @@ logging:
           size: 5Gi
         resources:
           requests:
-            cpu: 100m
+            cpu: 50m
           limits: {}
     kibana:
       count: 1
@@ -177,8 +177,8 @@ clusterAuditor:
   values:
     resources:
       requests:
-        cpu: 100m
-        memory: .5Gi
+        cpu: 50m
+        memory: .25Gi
       limits: {}
 
 monitoring:
@@ -188,26 +188,26 @@ monitoring:
       alertmanagerSpec:
         resources:
           requests:
-            cpu: 100m
-            memory: 200Mi
+            cpu: 50m
+            memory: 100Mi
           limits: {}
     prometheusOperator:
       resources:
         requests:
-          cpu: 250m
-          memory: 400Mi
+          cpu: 100m
+          memory: 100Mi
         limits: {}
     prometheus:
       prometheusSpec:
         resources:
           requests:
-            cpu: 100m
-            memory: 200Mi
+            cpu: 50m
+            memory: 100Mi
           limits: {}
     grafana:
       resources:
         requests:
-          cpu: 100m
+          cpu: 50m
           memory: 128Mi
         limits: {}
     kubeStateMetrics:
@@ -219,7 +219,7 @@ monitoring:
     nodeExporter:
       resources:
         requests:
-          cpu: 100m
+          cpu: 50m
           memory: 30Mi
         limits: {}
 
@@ -229,8 +229,8 @@ gatekeeper:
     replicas: 1
     resources:
       requests:
-        cpu: 100m
-        memory: 256Mi
+        cpu: 50m
+        memory: 128Mi
       limits: {}
 
 twistlock:
