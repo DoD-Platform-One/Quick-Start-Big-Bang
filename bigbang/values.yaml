@@ -188,26 +188,26 @@ monitoring:
       alertmanagerSpec:
         resources:
           requests:
-            cpu: 50m
-            memory: 100Mi
+            cpu: 100m
+            memory: 200Mi
           limits: {}
     prometheusOperator:
       resources:
         requests:
-          cpu: 100m
-          memory: 100Mi
+          cpu: 250m
+          memory: 400Mi
         limits: {}
     prometheus:
       prometheusSpec:
         resources:
           requests:
-            cpu: 50m
-            memory: 100Mi
+            cpu: 100m
+            memory: 200Mi
           limits: {}
     grafana:
       resources:
         requests:
-          cpu: 50m
+          cpu: 100m
           memory: 128Mi
         limits: {}
     kubeStateMetrics:
@@ -219,7 +219,7 @@ monitoring:
     nodeExporter:
       resources:
         requests:
-          cpu: 50m
+          cpu: 100m
           memory: 30Mi
         limits: {}
 
