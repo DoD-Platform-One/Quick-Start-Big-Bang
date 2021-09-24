@@ -22,7 +22,7 @@ logging:
           size: 5Gi
         resources:
           requests:
-            cpu: 50m
+            cpu: 100m
           limits: {}
       data:
         count: 1
@@ -30,7 +30,7 @@ logging:
           size: 5Gi
         resources:
           requests:
-            cpu: 50m
+            cpu: 100m
           limits: {}
     kibana:
       count: 1
