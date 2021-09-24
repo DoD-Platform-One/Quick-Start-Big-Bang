@@ -177,8 +177,8 @@ clusterAuditor:
   values:
     resources:
       requests:
-        cpu: 50m
-        memory: .25Gi
+        cpu: 100m
+        memory: .5Gi
       limits: {}
 
 monitoring:
