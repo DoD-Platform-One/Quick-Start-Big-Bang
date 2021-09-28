@@ -10,7 +10,7 @@ flux:
     cleanupOnFail: false
 
 networkPolicies:
-  controlPlaneCidr: 172.18.0.0/12
+  controlPlaneCidr: 172.16.0.0/12
 
 logging:
   enabled: true
@@ -36,6 +36,7 @@ logging:
       count: 1
 
 fluentbit:
+  enabled: false
   values:
     securityContext:
       privileged: true
@@ -173,7 +174,7 @@ istio:
           -----END CERTIFICATE-----
 
 clusterAuditor:
-  enabled: true
+  enabled: false
   values:
     resources:
       requests:
