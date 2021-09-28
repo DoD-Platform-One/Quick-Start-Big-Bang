@@ -10,7 +10,7 @@ flux:
     cleanupOnFail: false
 
 networkPolicies:
-  controlPlaneCidr: 172.16.0.0/12
+  controlPlaneCidr: 172.18.0.0/12
 
 logging:
   enabled: true

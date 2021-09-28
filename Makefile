@@ -1,6 +1,8 @@
 all: up
 
 up:
+	./.iron-bank-creds.sh
+	#sudo sysctl -w vm.max_map_count=262144
 	./init-k3d.sh
 	sleep 30
 	terraform init
