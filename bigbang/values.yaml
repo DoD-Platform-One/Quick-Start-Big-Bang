@@ -172,6 +172,11 @@ istio:
           Dfvp7OOGAN6dEOM4+qR9sdjoSYKEBpsr6GtPAQw4dy753ec5
           -----END CERTIFICATE-----
 
+istiooperator:
+  enabled: true
+  values:
+    enableCRDTemplates: true
+
 clusterAuditor:
   enabled: true
   values:
