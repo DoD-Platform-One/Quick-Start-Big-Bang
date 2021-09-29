@@ -36,7 +36,6 @@ logging:
       count: 1
 
 fluentbit:
-  enabled: false
   values:
     securityContext:
       privileged: true
@@ -185,19 +184,19 @@ clusterAuditor:
 monitoring:
   enabled: true
   values:
-    alertmanager:
-      alertmanagerSpec:
-        resources:
-          requests:
-            cpu: 100m
-            memory: 200Mi
-          limits: {}
-    prometheusOperator:
-      resources:
-        requests:
-          cpu: 250m
-          memory: 400Mi
-        limits: {}
+    # alertmanager:
+    #   alertmanagerSpec:
+    #     resources:
+    #       requests:
+    #         cpu: 100m
+    #         memory: 200Mi
+    #       limits: {}
+    # prometheusOperator:
+    #   resources:
+    #     requests:
+    #       cpu: 250m
+    #       memory: 400Mi
+    #     limits: {}
     prometheus:
       prometheusSpec:
         resources:
@@ -205,19 +204,19 @@ monitoring:
             cpu: 100m
             memory: 200Mi
           limits: {}
-    grafana:
-      resources:
-        requests:
-          cpu: 100m
-          memory: 128Mi
-        limits: {}
-    kubeStateMetrics:
+    # grafana:
+    #   resources:
+    #     requests:
+    #       cpu: 100m
+    #       memory: 128Mi
+    #     limits: {}
+    kube-state-metrics:
       resources:
         requests:
           cpu: 10m
           memory: 32Mi
         limits: {}
-    nodeExporter:
+    prometheus-node-exporter:
       resources:
         requests:
           cpu: 100m
@@ -233,6 +232,17 @@ gatekeeper:
         cpu: 100m
         memory: 256Mi
       limits: {}
+    violations:
+      allowedDockerRegistries:
+        match:
+          excludedNamespaces:
+          # Allows load balancer images for k3d from public repo
+          - istio-system
+      hostNetworking:
+        match:
+          excludedNamespaces:
+          # Allows load balancer containers to map ports for k3d
+          - istio-system
 
 twistlock:
   enabled: false
