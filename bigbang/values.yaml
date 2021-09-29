@@ -172,24 +172,6 @@ istio:
           Dfvp7OOGAN6dEOM4+qR9sdjoSYKEBpsr6GtPAQw4dy753ec5
           -----END CERTIFICATE-----
 
-istiooperator:
-  enabled: true
-  flux:
-    install:
-      crds: CreateReplace
-    upgrade:
-      crds: CreateReplace
-  #values:
-  #  enableCRDTemplates: true
-
-eckoperator:
-  enabled: true
-  flux:
-    install:
-      crds: CreateReplace
-    upgrade:
-      crds: CreateReplace
-
 clusterAuditor:
   enabled: true
   values:
