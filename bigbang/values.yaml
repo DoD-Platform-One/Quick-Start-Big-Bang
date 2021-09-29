@@ -251,6 +251,14 @@ twistlock:
       persistence:
         size: 5Gi
 
+eckoperator:
+  enabled: true
+  git:
+    repo: https://repo1.dso.mil/platform-one/big-bang/apps/core/eck-operator.git
+    path: "./chart"
+    tag: "1.7.x-bump"
+
+
 # Explicitly enable all addons for CI
 addons:
   argocd:
