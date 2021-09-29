@@ -174,7 +174,7 @@ istio:
           -----END CERTIFICATE-----
 
 clusterAuditor:
-  enabled: false
+  enabled: true
   values:
     resources:
       requests:
