@@ -174,8 +174,13 @@ istio:
 
 istiooperator:
   enabled: true
-  values:
-    enableCRDTemplates: true
+  flux:
+    install:
+      crds: CreateReplace
+    upgrade:
+      crds: CreateReplace
+  #values:
+  #  enableCRDTemplates: true
 
 clusterAuditor:
   enabled: true
