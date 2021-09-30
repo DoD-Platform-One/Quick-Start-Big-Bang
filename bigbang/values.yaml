@@ -23,7 +23,7 @@ logging:
         resources:
           requests:
             cpu: 100m
-          limits: {}
+          #limits: {}
       data:
         count: 1
         persistence:
@@ -31,7 +31,7 @@ logging:
         resources:
           requests:
             cpu: 100m
-          limits: {}
+          #limits: {}
     kibana:
       count: 1
 
@@ -180,7 +180,7 @@ clusterAuditor:
       requests:
         cpu: 100m
         memory: .5Gi
-      limits: {}
+      #limits: {}
 
 monitoring:
   enabled: true
@@ -190,7 +190,7 @@ monitoring:
     #     resources:
     #       requests:
     #         cpu: 100m
-    #         memory: 200Mi
+    #         memory: 100Mi
     #       limits: {}
     # prometheusOperator:
     #   resources:
@@ -204,7 +204,7 @@ monitoring:
           requests:
             cpu: 100m
             memory: 200Mi
-          limits: {}
+          #limits: {}
     # grafana:
     #   resources:
     #     requests:
@@ -216,13 +216,13 @@ monitoring:
         requests:
           cpu: 10m
           memory: 32Mi
-        limits: {}
+        #limits: {}
     prometheus-node-exporter:
       resources:
         requests:
           cpu: 100m
-          memory: 30Mi
-        limits: {}
+          memory: 25Mi
+        #limits: {}
 
 gatekeeper:
   enabled: true
@@ -232,7 +232,7 @@ gatekeeper:
       requests:
         cpu: 100m
         memory: 256Mi
-      limits: {}
+      #limits: {}
     violations:
       allowedDockerRegistries:
         match:
