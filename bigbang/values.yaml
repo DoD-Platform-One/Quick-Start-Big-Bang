@@ -13,7 +13,7 @@ networkPolicies:
   controlPlaneCidr: 172.16.0.0/12
 
 logging:
-  enabled: true
+  enabled: false
   values:
     elasticsearch:
       master:
@@ -36,6 +36,7 @@ logging:
       count: 1
 
 fluentbit:
+  enabled: true
   values:
     securityContext:
       privileged: true
