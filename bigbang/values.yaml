@@ -13,7 +13,7 @@ networkPolicies:
   controlPlaneCidr: 172.16.0.0/12
 
 logging:
-  enabled: false
+  enabled: true
   values:
     elasticsearch:
       master:
