@@ -10,8 +10,8 @@ k3d cluster delete ${APPLICATION} || echo "Cluster already deleted"
 mkdir -p ${IMAGE_CACHE}
 
 # Create the cluster
-#  -i rancher/k3s:v1.21.5-k3s1 \
 k3d cluster create \
+  -i rancher/k3s:v1.21.5-k3s1 \
   --volume ${IMAGE_CACHE}:/var/lib/rancher/k3s/agent/containerd/io.containerd.content.v1.content \
   --volume /etc/machine-id:/etc/machine-id \
   --k3s-server-arg "--disable=traefik" \
