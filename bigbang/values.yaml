@@ -23,7 +23,7 @@ logging:
         resources:
           requests:
             cpu: 100m
-          #limits: {}
+          limits: {}
       data:
         count: 1
         persistence:
@@ -31,7 +31,7 @@ logging:
         resources:
           requests:
             cpu: 100m
-          #limits: {}
+          limits: {}
     kibana:
       count: 1
 
