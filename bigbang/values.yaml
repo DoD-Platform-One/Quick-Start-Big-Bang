@@ -210,13 +210,13 @@ monitoring:
           cpu: 100m
           memory: 128Mi
         limits: {}
-    kube-state-metrics:
+    kubeStateMetrics:
       resources:
         requests:
           cpu: 10m
           memory: 32Mi
         limits: {}
-    prometheus-node-exporter:
+    nodeExporter:
       resources:
         requests:
           cpu: 100m
