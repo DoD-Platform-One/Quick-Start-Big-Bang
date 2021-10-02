@@ -2,7 +2,7 @@
 # with some further tweaks made to add the ingress certs for bigbang.dev and tweak resource usage to fit on a
 # typical dev laptop
 
-hostname: bigbang.dev
+hostname: dsop.io
 
 flux:
   interval: 1m
