@@ -1,5 +1,5 @@
 module "big_bang" {
-  source = "git::https://repo1.dso.mil/platform-one/big-bang/terraform-modules/big-bang-terraform-launcher.git?ref=tags/v0.2.0"
+  source = "git::https://repo1.dso.mil/platform-one/big-bang/terraform-modules/big-bang-terraform-launcher.git?ref=tags/v0.3.0"
 
   big_bang_manifest_file = "bigbang/start.yaml"
   registry_credentials = [{
