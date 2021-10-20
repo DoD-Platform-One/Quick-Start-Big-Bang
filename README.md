@@ -10,7 +10,7 @@ This is a small repo to help quickly test basic concepts of Big Bang on a local 
 
 What you need:
 
-- [Docker](https://docs.docker.com/get-started/)
+- [Docker](https://docs.docker.com/get-started/) with the ability to run containers (either `sudo` or your user in the `docker` group)
 - [k3d](https://github.com/rancher/k3d)
 - [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 - VM or Machine with 
@@ -95,8 +95,8 @@ For your convenience, a Makefile is provided with targets `make up` and `make do
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-| Name | Version |
-|------|---------|
+| Name                                                                      | Version   |
+| ------------------------------------------------------------------------- | --------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.0 |
 
 ## Providers
@@ -105,15 +105,15 @@ No providers.
 
 ## Inputs
 
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_registry1_password"></a> [registry1\_password](#input\_registry1\_password) | Your password on https://registry1.dso.mil. You can find it under 'CLI secret' in your user profile | `string` | n/a | yes |
-| <a name="input_registry1_username"></a> [registry1\_username](#input\_registry1\_username) | Your username on https://registry1.dso.mil | `string` | n/a | yes |
+| Name                                                                                       | Description                                                                                         | Type     | Default | Required |
+| ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- | -------- | ------- | :------: |
+| <a name="input_registry1_password"></a> [registry1\_password](#input\_registry1\_password) | Your password on https://registry1.dso.mil. You can find it under 'CLI secret' in your user profile | `string` | n/a     |   yes    |
+| <a name="input_registry1_username"></a> [registry1\_username](#input\_registry1\_username) | Your username on https://registry1.dso.mil                                                          | `string` | n/a     |   yes    |
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
+| Name                                                                                                       | Description                                                                                                                                                                                                                                    |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a name="output_external_load_balancer"></a> [external\_load\_balancer](#output\_external\_load\_balancer) | JSON array with information on all LoadBalancer services in the istio-system namespace. Example output:<pre>[<br>  {<br>    "name": "public-ingressgateway",<br>    "ip": "192.0.2.0",<br>    "hostname": "null"<br>  },<br>  {...}<br>]</pre> |
-| <a name="output_istio_gw_ip"></a> [istio\_gw\_ip](#output\_istio\_gw\_ip) | DEPRECATED - Kept for backwards compatibility reasons, will be removed later. Returns the IP of the first LoadBalancer found in the istio-system namespace |
+| <a name="output_istio_gw_ip"></a> [istio\_gw\_ip](#output\_istio\_gw\_ip)                                  | DEPRECATED - Kept for backwards compatibility reasons, will be removed later. Returns the IP of the first LoadBalancer found in the istio-system namespace                                                                                     |
 <!-- END_TF_DOCS -->
