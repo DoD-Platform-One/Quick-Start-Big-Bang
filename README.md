@@ -10,7 +10,7 @@ This is a small repo to help quickly test basic concepts of Big Bang on a local 
 
 What you need:
 
-- [Docker](https://docs.docker.com/get-started/)
+- [Docker](https://docs.docker.com/get-started/) with the ability to run containers (either `sudo` or your user in the `docker` group)
 - [k3d](https://github.com/rancher/k3d)
 - [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 - VM or Machine with 
